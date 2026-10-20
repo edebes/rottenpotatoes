@@ -57,7 +57,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  # Order movies by title (ascending or descending)
+  # Order movies by column (ascending or descending)
   def sort_table
     column = params[:column] || "title"
     direction = params[:direction] == "desc" ? :desc : :asc

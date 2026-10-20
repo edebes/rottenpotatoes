@@ -8,3 +8,156 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Main table */
+body {
+    max-width: 800px;
+    margin: auto;
+    color: rgb(65, 28, 28);
+    background: rgb(235, 234, 234);
+    font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+    margin-bottom: 1.25rem;
+    color: rgb(176, 60, 60);
+}
+
+#movies {
+    overflow-x: auto;
+    border: 1px solid rgb(235, 234, 234);
+    border-radius: 0.6rem;
+    background: white;
+    box-shadow: 0 3px 12px rgb(65, 28, 28);
+}
+
+#movies table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#movies th,
+#movies td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgb(235, 234, 234);
+}
+
+#movies th {
+    color: #fff;
+    background: rgb(65, 28, 28);
+}
+
+#movies th a {
+    color: white;
+}
+
+#movies th.sorted-column {
+    background: rgb(136, 33, 33)
+}
+
+#movies td.sorted-column {
+    background: rgb(255, 244, 39)
+}
+
+#movies td.sorted-column:hover {
+    background: rgb(166, 159, 27)
+}
+
+#movies th[aria-sort="ascending"]::after {
+    content: " ▲";
+}
+
+#movies th[aria-sort="descending"]::after {
+    content: " ▼";
+}
+
+#movies tbody tr:hover {
+    background: rgb(231, 231, 249);
+}
+
+a {
+    color: rgb(97, 97, 255);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#movies+a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.65rem 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    background: rgb(65, 28, 28);
+}
+
+#movies+a:hover {
+    background: rgb(136, 33, 33);
+    text-decoration: none;
+}
+
+/* Movie details */
+[id^="movie_"] {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+    border: 1px solid rgb(235, 234, 234);
+    border-radius: 0.6rem;
+    background: white;
+    box-shadow: 0 3px 12px rgb(65, 28, 28);
+}
+
+[id^="movie_"]>div {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgb(235, 234, 234);
+}
+
+/* New/Edit movie form */
+form {
+    margin-top: 1rem;
+}
+
+form label {
+    display: block;
+    margin: 0.8rem 0 0.3rem;
+    font-weight: 600;
+}
+
+form label {
+    display: block;
+    margin: 0.8rem 0 0.3rem;
+    font-weight: 600;
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea,
+form select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 32rem;
+    padding: 0.65rem;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 0.35rem;
+    font: inherit;
+}
+
+form input[type="submit"],
+button,
+input[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.65rem 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    background: rgb(65, 28, 28);
+    font: inherit;
+}
+
+form input[type="submit"]:hover,
+button:hover,
+input[type="submit"]:hover {
+    background: rgb(136, 33, 33);
+}
