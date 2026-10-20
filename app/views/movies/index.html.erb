@@ -11,11 +11,11 @@
   <table>
     <thead>
       <tr>
-        <th class="<%= 'sorted-column' if active_column == "title" %>" aria-sort="<%= active_column == "title" ? (active_direction == "asc" ? "descending" : "ascending") : "none" %>">
+        <th class="<%= 'sorted-column' if active_column == "title" %>" aria-sort="<%= active_column == "title" ? (active_direction == "asc" ? "ascending" : "descending") : "none" %>">
         <%= link_to "Title", sort_table_movies_path(column: "title", direction: params[:direction] == "asc" ? "desc" : "asc") %></th>
-        <th class="<%= 'sorted-column' if active_column == "rating" %>" aria-sort="<%= active_column == "rating" ? (active_direction == "asc" ? "descending" : "ascending") : "none" %>">
+        <th class="<%= 'sorted-column' if active_column == "rating" %>" aria-sort="<%= active_column == "rating" ? (active_direction == "asc" ? "ascending" : "descending") : "none" %>">
         <%= link_to "Rating", sort_table_movies_path(column: "rating", direction: params[:direction] == "asc" ? "desc" : "asc") %></th>
-        <th class="<%= 'sorted-column' if active_column == "release_date" %>" aria-sort="<%= active_column == "release_date" ? (active_direction == "asc" ? "descending" : "ascending") : "none" %>">
+        <th class="<%= 'sorted-column' if active_column == "release_date" %>" aria-sort="<%= active_column == "release_date" ? (active_direction == "asc" ? "ascending" : "descending") : "none" %>">
         <%= link_to "Release date", sort_table_movies_path(column: "release_date", direction: params[:direction] == "asc" ? "desc" : "asc") %></th>
         <th>Details</th>
       </tr>
