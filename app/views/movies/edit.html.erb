@@ -2,11 +2,11 @@
 
 <h1>Editing movie</h1>
 
-<%= render "form", movie: @movie %>
+<%= render "form", movie: @movie, column: params[:column] || "title", direction: params[:direction] || "asc" %>
 
 <br>
 
 <div>
-  <%= link_to "Show this movie", @movie %> |
-  <%= link_to "Back to movies", movies_path %>
+  <%= link_to "Show this movie", movie_path(@movie, column: params[:column] || "title", direction: params[:direction] || "asc") %> |
+  <%= link_to "Back to movies", sort_table_movies_path(column: params[:column] || "title", direction: params[:direction] || "asc") %>
 </div>

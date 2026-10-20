@@ -34,4 +34,7 @@
   <div>
     <%= form.submit %>
   </div>
+
+  <%= hidden_field_tag :column, params[:column] || "title" %>
+  <%= hidden_field_tag :direction, params[:direction] || "asc" %>
 <% end %>

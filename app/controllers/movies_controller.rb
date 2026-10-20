@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.order(:title).paginate(page: params[:page])
   end
 
   # GET /movies/1 or /movies/1.json
@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: "Movie was successfully created." }
+        format.html { redirect_to movie_path(@movie, column: params[:column] || "title", direction: params[:direction] || "asc"), notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_content }
@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: "Movie was successfully updated.", status: :see_other }
+        format.html { redirect_to movie_path(@movie, column: params[:column] || "title", direction: params[:direction] || "asc"), notice: "Movie was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit, status: :unprocessable_content }
@@ -52,9 +52,18 @@ class MoviesController < ApplicationController
     @movie.destroy!
 
     respond_to do |format|
-      format.html { redirect_to movies_path, notice: "Movie was successfully destroyed.", status: :see_other }
+      format.html { redirect_to sort_table_movies_path(column: params[:column], direction: params[:direction]), notice: "Movie was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  # Order movies by title (ascending or descending)
+  def sort_table
+    column = params[:column] || "title"
+    direction = params[:direction] == "desc" ? :desc : :asc
+
+    @movies = Movie.order(column => direction).paginate(page: params[:page])
+    render :index
   end
 
   private

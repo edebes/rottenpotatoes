@@ -8,9 +8,9 @@
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Rating</th>
-        <th>Release date</th>
+        <th><%= link_to "Title", sort_table_movies_path(column: "title", direction: params[:direction] == "asc" ? "desc" : "asc") %></th>
+        <th><%= link_to "Rating", sort_table_movies_path(column: "rating", direction: params[:direction] == "asc" ? "desc" : "asc") %></th>
+        <th><%= link_to "Release date", sort_table_movies_path(column: "release_date", direction: params[:direction] == "asc" ? "desc" : "asc") %></th>
       </tr>
     </thead>
     <tbody>
@@ -19,11 +19,12 @@
           <td><%= movie.title %></td>
           <td><%= movie.rating %></td>
           <td><%= movie.release_date %></td>
-          <td><%= link_to "Show this movie", movie %></td>
+          <td><%= link_to "Show this movie", movie_path(movie, column: params[:column], direction: params[:direction]) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @movies, params: {column: params[:column], direction: params[:direction]} %>
 </div>
 
-<%= link_to "New movie", new_movie_path %>
+<%= link_to "New movie", new_movie_path(column: params[:column], direction: params[:direction]) %>
