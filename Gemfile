@@ -33,7 +33,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Have Pagination for sorts
-gem "will_paginate", "~> 3.3"
+gem "will_paginate", "~> 4.0"
 
 group :development, :test do
   gem "sqlite3", ">= 2.1"
